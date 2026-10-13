@@ -1,0 +1,6 @@
+{
+  global:
+    wallet_engine_wallet_core_*;
+  local:
+    *;
+};

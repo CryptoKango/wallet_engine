@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "repository": "https://github.com/trustwallet/wallet-core.git",
+    "tag": "4.8.4",
+    "commit": "d40d24a63d92619167903369308bf0e2f7eb3a59",
+    "license": "Apache-2.0"
+  },
+  "officialReleaseArchive": {
+    "url": "https://github.com/trustwallet/wallet-core/releases/download/4.8.4/TrustWalletCore-4.8.4.tar.xz",
+    "sha256": "6d87c490c16a12fb51d3ddb5bca4d277f08d26aad172c48deb773d3dd4b72567"
+  },
+  "officialAppleArtifact": {
+    "url": "https://github.com/trustwallet/wallet-core/releases/download/4.8.4/WalletCore.xcframework.zip",
+    "sha256": "3d70d9d988c253e13e65c6fa9947f5ed7c9e31ca55ff719d055646f11dd0287a"
+  },
+  "bridge": {
+    "abiVersion": 2,
+    "libraryName": "wallet_engine_core"
+  },
+  "artifacts": [
+    {
+      "target": "android-arm64-v8a",
+      "file": "android/src/main/jniLibs/arm64-v8a/libwallet_engine_core.so",
+      "sha256": "aed00d85468acdda10097bda0cac52954c3bc1d0d5fcfda9e115f634cb29f2a4"
+    },
+    {
+      "target": "ios-arm64",
+      "file": "darwin/wallet_engine/WalletEngineCore.xcframework/ios-arm64/WalletEngineCore.framework/WalletEngineCore",
+      "sha256": "03059366e8107e8f145b1a63adae38f15c154477843665653a3a90239d35d927"
+    },
+    {
+      "target": "ios-simulator-universal",
+      "file": "darwin/wallet_engine/WalletEngineCore.xcframework/ios-arm64_x86_64-simulator/WalletEngineCore.framework/WalletEngineCore",
+      "sha256": "ab49cc3339b626fa99bdfa2ceaf13b139a3b17a7b2d369ccf46b30e0cd3a6e82"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+name: wallet_engine CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: dart run tool/verify_wallet_core_lock.dart
+      - run: dart format --output=none --set-exit-if-changed lib test tool example/lib example/test example/integration_test
+      - run: flutter analyze
+      - run: flutter test --coverage
+      - run: dart run tool/check_coverage.dart
+        env:
+          MIN_LINE_COVERAGE: '60'
+      - run: dart doc --output /tmp/wallet_engine_doc
+      - run: flutter analyze
+        working-directory: example
+      - run: flutter test
+        working-directory: example
+
+  owned-bridge-apple:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Download pinned official Wallet Core release archive
+        run: >-
+          curl --fail --location --retry 3
+          --output /tmp/TrustWalletCore-4.8.4.tar.xz
+          https://github.com/trustwallet/wallet-core/releases/download/4.8.4/TrustWalletCore-4.8.4.tar.xz
+      - name: Build and smoke-test owned Apple bridge
+        run: >-
+          WALLET_ENGINE_SKIP_ARCHIVE=1
+          bash tool/build_apple_xcframework.sh
+          /tmp/TrustWalletCore-4.8.4.tar.xz
+          /tmp/wallet-engine-apple
+  ios-build:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+        working-directory: example
+      - run: flutter build ios --simulator --no-codesign
+        working-directory: example
+
+  android-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: bash tool/verify_android_artifacts.sh
+      - run: flutter pub get
+        working-directory: example
+      - run: flutter build apk --debug
+        working-directory: example
+      - run: bash tool/verify_android_apk.sh example/build/app/outputs/flutter-apk/app-debug.apk

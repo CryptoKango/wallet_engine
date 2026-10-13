@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+  - wallet_engine (0.1.0):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - wallet_engine (from `.symlinks/plugins/wallet_engine/darwin`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+  wallet_engine:
+    :path: ".symlinks/plugins/wallet_engine/darwin"
+
+SPEC CHECKSUMS:
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
+  wallet_engine: 68fd2ee7fd7d1c19ca40b321e3d6cfee38de3083
+
+PODFILE CHECKSUM: d71a8f9d234bf288cee64b372c30c196c8075224
+
+COCOAPODS: 1.17.0

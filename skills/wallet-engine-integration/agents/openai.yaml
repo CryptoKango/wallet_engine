@@ -1,0 +1,4 @@
+interface:
+  display_name: "Wallet Engine Integration"
+  short_description: "Integrate and troubleshoot wallet_engine apps"
+  default_prompt: "Use $wallet-engine-integration to integrate wallet_engine into this Flutter application."

@@ -1,0 +1,23 @@
+PODS:
+  - FlutterMacOS (1.0.0)
+  - wallet_engine (0.1.0):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - wallet_engine (from `Flutter/ephemeral/.symlinks/plugins/wallet_engine/darwin`)
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  wallet_engine:
+    :path: Flutter/ephemeral/.symlinks/plugins/wallet_engine/darwin
+
+SPEC CHECKSUMS:
+  FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
+  wallet_engine: 42c6686a91f0dc2d9cc242e0d05a6aa72ddd2b71
+
+PODFILE CHECKSUM: 346bfb2deb41d4a6ebd6f6799f92188bde2d246f
+
+COCOAPODS: 1.17.0

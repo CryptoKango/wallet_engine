@@ -1,0 +1,38 @@
+group = 'com.walletengine.wallet_engine'
+version = '0.1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:9.0.1'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.walletengine.wallet_engine'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 23
+    }
+
+    buildFeatures {
+        buildConfig false
+    }
+
+    sourceSets {
+        main.jniLibs.srcDirs = ['src/main/jniLibs']
+    }
+}

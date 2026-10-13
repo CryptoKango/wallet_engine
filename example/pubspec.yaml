@@ -1,0 +1,27 @@
+name: wallet_engine_example
+description: Local integration playground for the wallet_engine package.
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  wallet_engine:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  on_chain: ^8.1.0
+
+flutter:
+  # Keep the example on that supported integration path until the dependency
+  # declares macOS Swift Package Manager support.
+  config:
+    enable-swift-package-manager: false
+  uses-material-design: true
